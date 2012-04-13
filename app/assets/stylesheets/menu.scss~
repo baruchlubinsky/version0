@@ -1,0 +1,82 @@
+$menu-width: 185px;
+$radius: 5px;
+
+#context-menu
+{
+	margin: 0;
+	padding: 7px 6px 0px;
+	background: #7d7d7d; 
+	line-height: 100%;
+	border-radius: $radius;
+	display: inline-block;
+	a
+	{
+		text-decoration: none;
+		display: block;
+		white-space: nowrap;
+	}
+	li
+	{
+		margin: 0 5px;
+		padding: 0 0 8px;
+		float: left;
+		position: relative;
+		list-style: none;
+		z-index: 2;
+	}
+	li > a
+	{
+		color: black;
+		border-radius: $radius -2px;
+	}
+	.current a, li:hover > a
+	{
+		background: #666;
+		color: white;
+		//border-top: solid 1px #f8f8f8;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+		text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+	}
+	ul
+	{
+		display: none;
+		
+		margin: 0;
+		padding: 4px 0 0 0;
+		width: $menu-width;
+		position: absolute;
+		z-index: 2;
+		top: 15px;
+		left: 0;
+		background: #ddd;
+		border: solid;
+		border-radius: $radius;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+		li
+		{
+			float: none;
+		}
+		
+		ul
+		{
+			left: $menu-width - 10px;
+			top: -3px;
+		}
+		
+		li:first-child > a
+		{
+			border-top-left-radius: $radius - 1px;
+			border-top-right-radius: $radius - 1px;
+		}
+		li:first-child > a
+		{
+			border-bottom-left-radius: $radius - 1px;
+			border-bottom-right-radius: $radius - 1px;
+		}
+	}
+	li:hover > ul
+	{
+		display:block;
+	}
+		
+}

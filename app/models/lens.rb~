@@ -1,0 +1,3 @@
+class Lens
+	attr_accessible :items, :name
+end

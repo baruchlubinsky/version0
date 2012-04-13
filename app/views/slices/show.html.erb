@@ -1,0 +1,24 @@
+<% content_for :contextName do %>
+	<% if defined? @slice.lens.name %>
+		<%= @slice.lens.name %>
+	<% else %>
+		<%= 'Context' %>
+	<% end %>
+<% end %>
+
+<% content_for :templateMenu do %>
+	<%= render :partial => 'templates/menu', :locals => { :menu => @slice.workspace.project.template }  %>
+<% end %>
+
+<% content_for :leftHand do 
+	if defined? @slice.lens.items
+		even = true
+		@slice.lens.items.each do |l| %>
+			<tr><td class='left-<%= even ? 'even' : 'odd' %>-row'>
+				<%= l.name %>
+			</td></tr>
+			<% even = !even %>
+		<% end
+	end
+ end %>
+

@@ -1,0 +1,6 @@
+class MatrixObject
+	include Mongoid::Document
+	
+	belongs_to :templateElement
+	has_and_belongs_to_many :slices
+end
