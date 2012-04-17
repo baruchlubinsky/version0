@@ -40,16 +40,20 @@ end
 	demo.elements[4].child_elements.build(:name => name)
 end
 
-['Sales Metric', 'Sales Forecast'].each do |name|
+['Product Features', 'Product Profitability', 'Product Assessment', 'Product Strategy'].each do |name|
 	demo.elements[5].child_elements.build(:name => name)
 end
 
-['Campaign Objectives', 'Campaign Metrics', 'Campaign Strategy', 'Campaign Execution'].each do |name|
+['Sales Metric', 'Sales Forecast'].each do |name|
 	demo.elements[6].child_elements.build(:name => name)
 end
 
-['Budget Plan'].each do |name|
+['Campaign Objectives', 'Campaign Metrics', 'Campaign Strategy', 'Campaign Execution'].each do |name|
 	demo.elements[7].child_elements.build(:name => name)
+end
+
+['Budget Plan'].each do |name|
+	demo.elements[8].child_elements.build(:name => name)
 end
 
 
