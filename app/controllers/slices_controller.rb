@@ -6,6 +6,10 @@ class SlicesController < ApplicationController
 		p.workspaces << @slice.workspace
 		@slice.workspace 	
 		@slice.workspace.project.template = Template.first
+	 	nav = Navigation.new
+	 	nav.name = @slice.template.name
+	 	nav.nav_id = @slice.template._id
+	 	@slice.navigations << nav
 		@slice.save 
 		redirect_to slices_path(@slice)
 	end

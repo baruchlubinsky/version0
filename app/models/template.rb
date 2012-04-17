@@ -5,4 +5,8 @@ class Template
 	belongs_to :project
 	
 	field :name, :type => String
+	
+	def child_elements
+		self.elements
+	end
 end

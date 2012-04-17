@@ -28,7 +28,9 @@ end
 	demo.elements[1].child_elements.build(:name => name)
 end
 
-[
+['Competitor Assessment', 'Competitor Positioning'].each do |name|
+	demo.elements.child_elements.build(:name => name)
+end
 
 demo.save!
 

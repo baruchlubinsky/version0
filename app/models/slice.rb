@@ -5,6 +5,16 @@ class Slice
 	
 	has_and_belongs_to_many :matrixobjects
 	
-	attr_accessor :contextMenu, :cSelection, :lens, :navigation
+	embeds_many :navigations
 	
-end
+	embeds_one :lens
+	
+	#field :navigation, :type => Array
+	#field :lens , :type => Array
+	#attr_accessor :contextMenu, :cSelection, :lens, :navigation
+	
+	def template
+		self.workspace.project.template
+	end
+	
+end	

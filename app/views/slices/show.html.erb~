@@ -1,6 +1,15 @@
+<% content_for :breadcrumb do %>
+	My Projects 
+	<% @slice.navigations.each do |nav| %>
+		<% unless nav.nav_id.nil?  %>
+		> <%= link_to nav.name, slices_navigation_path(:slices_id => @slice.id, :id => nav.nav_id), :method => :delete  %>
+		<% end %>
+	<% end %>
+<% end %>
+
 <% content_for :contextName do %>
-	<% if defined? @lens.name %>
-		<%= @lens.name %>
+	<% unless @slice.lens.nil? %>
+		<%= @slice.lens.name %>
 	<% else %>
 		<%= 'Context' %>
 	<% end %>
@@ -11,11 +20,11 @@
 <% end %>
 
 <% content_for :leftHand do 
-	if defined? @slice.lens.items
+	unless @slice.lens.nil?
 		even = true
-		@slice.lens.items.each do |l| %>
+		@slice.lens.lens_items.each do |l| %>
 			<tr><td class='left-<%= even ? 'even' : 'odd' %>-row'>
-				<%= l.name %>
+				<%= link_to l.title, l.link %>
 			</td></tr>
 			<% even = !even %>
 		<% end

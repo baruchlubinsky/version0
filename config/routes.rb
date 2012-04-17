@@ -3,6 +3,7 @@ MatrixMeV01::Application.routes.draw do
   
   resources :slices do
   	resources :lens
+  	resources :navigations
   end
 
   # The priority is based upon order of creation:

@@ -16,6 +16,7 @@
 			<table>
 			<tr>
 				<td><%= image_tag 'home.png' %></td>
+				<td><%= yield :breadcrumb %></td>
 			</tr>
 			</table>
 		</div>
@@ -72,9 +73,8 @@
 									<li>
 										<a href='#project'>Project</a>
 										<ul>
-											
-											<%= yield :templateMenu %>
-											
+											<li><%= link_to 'Structure', edit_slices_lens_path(:slices_id => @slice.id, :id => 'project', :option => 'structure')  %> </li>
+											<li><a>Assets</a></li>														
 										</ul>
 									</li>
 								</ul>

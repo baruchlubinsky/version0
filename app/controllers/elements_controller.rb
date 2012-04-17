@@ -1,0 +1,3 @@
+class ElementsController < ApplicationController
+
+end

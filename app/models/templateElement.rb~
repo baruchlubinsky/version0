@@ -1,7 +1,7 @@
 class Element
 	include Mongoid::Document
 	
-	embedded_in :template, :inverse_of => templateElements
+	embedded_in :template
 	recursively_embeds_many 
 	has_many :matrixObjects
 	
