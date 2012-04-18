@@ -1,4 +1,6 @@
 class SlicesController < ApplicationController
+	
+
 	def new
 		@slice = Slice.create!
 		@slice.workspace = Workspace.create!
@@ -15,8 +17,10 @@ class SlicesController < ApplicationController
 	end
 	
 	def show
+		
 		@slice = Slice.find(params[:id])
+		
 	end
-	
+
 end
 	

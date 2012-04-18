@@ -16,6 +16,7 @@
 			<table>
 			<tr>
 				<td><%= image_tag 'home.png' %></td>
+				<td><%= yield :breadcrumb %></td>
 			</tr>
 			</table>
 		</div>
@@ -93,7 +94,7 @@
 				<td class='search'><%= image_tag 'workspace-selected.png' %></td>
 				<td class='search'><span>Baruch, there are 50,000 resources in Matrix me for you.</span></td>
 				<td width=100% />
-				<td class='search'><%= image_tag src='plus.png' %></td>
+				<td class='search'><button id='addButton'><%= image_tag src='plus.png' %></button></td>
 			</tr></table>
 		</div>
 	</div>
@@ -103,7 +104,17 @@
 		</table>
 	</div>
 	<div id='content'>
-		<%= yield %>
+		<%= yield :content %>
+	</div>
+	<div id='full-screen-popup' class='hidden'>
+		<div id='add-item-form'>
+			<h3>New Matrix Object</h3>
+			<%= form_for [@slice, @new_object], :action => 'create' do |f| %>
+				<%= f.label :name, 'Object name' %>
+				<%= f.text_field :name %>
+				<%= f.submit %>
+			<% end %>
+		</div>
 	</div>
 </body>
 </html>

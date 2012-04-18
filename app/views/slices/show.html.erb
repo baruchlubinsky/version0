@@ -8,10 +8,10 @@
 <% end %>
 
 <% content_for :contextName do %>
-	<% unless @slice.lens.nil? %>
-		<%= @slice.lens.name %>
-	<% else %>
+	<% if @slice.lens.nil? %>
 		<%= 'Context' %>
+	<% else %>
+		<%= @slice.lens.name %>
 	<% end %>
 <% end %>
 
@@ -31,3 +31,10 @@
 	end
  end %>
 
+<% content_for :content do %>
+	<% unless @objects.nil? %>
+		<% @objects.each do |el| %>
+			<p><%= el.name %></p>
+		<% end %>
+	<% end %>
+<% end %>

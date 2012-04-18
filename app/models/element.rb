@@ -3,7 +3,7 @@ class Element
 	
 	embedded_in :template
 	recursively_embeds_many 
-	has_many :matrixobjects
+	has_many :matrix_objects
 	
 	field :name, :type => String
 	

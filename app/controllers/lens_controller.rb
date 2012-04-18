@@ -25,10 +25,8 @@ class LensController < ApplicationController
 		end
 		@slice.lens.name = params[:option]
 		
-		#@selection = @slice.workspace.project.template.elements.find(params[:id])
-		#@slice.lens = Lens.new
-		#@slice.lens.items = @selection.child_elements
-		#@slice.lens.name = @selection.name
-		render 'slices/show' 
+		@slice.save
+
+    redirect_to slices_path(@slice) 
 	end
 end

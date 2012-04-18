@@ -4,6 +4,6 @@ class Project
 	has_and_belongs_to_many :users
 	has_one :template
 	has_many :workspaces
-	has_many :matrixObjects
+	has_many :matrixobjects
 	
 end
