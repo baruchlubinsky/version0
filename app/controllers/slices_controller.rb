@@ -20,6 +20,13 @@ class SlicesController < ApplicationController
 		
 		@slice = Slice.find(params[:id])
 		
+		if @slice.currentElement.id == @slice.template.id
+		  @objects = @slice.template.all_objects
+		else
+      @objects = @slice.currentElement.matrix_objects  
+		end
+		
+		  
 	end
 
 end

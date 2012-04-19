@@ -112,6 +112,8 @@
 			<%= form_for [@slice, @matrix_object], :action => 'create' do |f| %>
 				<%= f.label :name, 'Object name' %>
 				<%= f.text_field :name %>
+				<%= f.label :type, 'Object type' %>
+				<%= f.select 'object_type', options_for_select(%w{Member Content Conversation Project Calibration})  %> 
 				<%= f.submit %>
 			<% end %>
 		</div>

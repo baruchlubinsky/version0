@@ -1,7 +1,0 @@
-class Session
-	include Mongoid::Document
-	
-	belongs_to :user
-	embedded_in :slice
-	belongs_to :project
-end

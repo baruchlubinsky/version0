@@ -5,6 +5,8 @@ class MatrixObjectsController < ApplicationController
 		@object = MatrixObject.new
 		
 		@object.name = params[:matrix_object][:name]
+		  
+		@object.object_type = params[:matrix_object][:object_type]
 		
 		@nav = @slice.template
 		

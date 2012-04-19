@@ -23,7 +23,7 @@ class LensController < ApplicationController
 				#@slice.lens.lens_items = location.child_elements.to_a
 			end
 		end
-		@slice.lens.name = params[:option]
+		@slice.lens.name = params[:option].capitalize
 		
 		@slice.save
 

@@ -5,10 +5,12 @@ class MatrixObject
 	
 	field :misc_attributes, :type => Hash
 	
+	field :object_type, :type => String
+	
 	belongs_to :element
 	
-	def test
-	  r = Element.new
-	  
+	def matrix_attributes
+	  { :name => @name }
 	end
+	
 end
