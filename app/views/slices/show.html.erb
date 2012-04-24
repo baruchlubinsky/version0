@@ -1,10 +1,19 @@
 <% content_for :breadcrumb do %>
-	<a>My Projects</a> 
-	<% @slice.navigations.each do |nav| %>
-		<% unless nav.nav_id.nil?  %>
-		> <%= link_to nav.name, slices_navigation_path(:slices_id => @slice.id, :id => nav.nav_id), :method => :delete  %>
-		<% end %>
+	<ul id='breadcrumb'>
+		<li><a>My Projects</a> </li>
+	<% @slice.breadcrumb.each do |crumb| %>
+		<li>
+			<%= link_to crumb[:nav].name, slices_navigation_path(:slices_id => @slice.id, :id => crumb[:nav].nav_id), :method => :delete  %>
+			<ul>
+				<% crumb[:elements].each do |el| %>
+					<li>
+						<%= link_to el.name, edit_slices_navigation_path(:slices_id => @slice.id, :id => el.id ) %> 
+					</li>
+				<% end %>
+			</ul>
+		</li>
 	<% end %>
+	</ul>
 <% end %>
 
 <% content_for :contextName do %>

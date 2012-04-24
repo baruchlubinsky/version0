@@ -29,4 +29,17 @@ class Slice
 		return element
 	end
 	
+	def breadcrumb
+	  menu = Array.new
+	  menu << { :nav => self.navigations[0], :elements => self.template.child_elements }
+	  unless self.template.id == self.navigations.last.nav_id
+      element = self.template
+	    self.navigations.drop(1).each do |n|
+        element = element.child_elements.find(n.nav_id)
+	      menu << { :nav => n, :elements => element.child_elements }
+	    end  
+	  end
+	  return menu
+	end
+	
 end	

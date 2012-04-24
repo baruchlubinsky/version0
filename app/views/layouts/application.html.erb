@@ -113,9 +113,30 @@
 				<%= f.label :name, 'Object name' %>
 				<%= f.text_field :name %>
 				<%= f.label :type, 'Object type' %>
-				<%= f.select 'object_type', options_for_select(%w{Member Content Conversation Project Calibration})  %> 
+				<%= f.select 'object_type', options_for_select(%w{Member Content Conversation Project Calibration}), :id => 'new_object_type_select' %> 
+				<div id='attributes_div'>
+				
+				</div>
 				<%= f.submit %>
 			<% end %>
+			<div id='member_attributes' class='hidden'>
+				<%= label_tag :company_name, 'Company' %>
+				<%= text_field_tag :company_name %>
+				<%= label_tag :job_title, 'Job title' %>
+				<%= text_field_tag :job_title %>
+				<%= label_tag :expertise_profile, 'Expertise Profile' %>
+				<%= text_field_tag :company_name %>
+				<%= label_tag :affiliations, 'Affiliations' %>
+				<%= text_field_tag :affiliations %>
+			</div>
+			<div id='content_attributes' class='hidden'>
+				<%= label_tag :content_type, 'Type' %>
+				<%= text_field_tag :content_type %>
+				<%= label_tag :author, 'Author' %>
+				<%= text_field_tag :author %>
+				<%= label_tag :description, 'Description' %>
+				<%= text_field_tag :description %>
+			</div>
 		</div>
 	</div>
 </body>

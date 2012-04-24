@@ -10,7 +10,7 @@ class MatrixObject
 	belongs_to :element
 	
 	def matrix_attributes
-	  { :name => @name }
+	  { :name => self.name }
 	end
 	
 end

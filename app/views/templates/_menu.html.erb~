@@ -1,7 +1,0 @@
-<li><a><%= menu.name %></a>
-	<ul>
-		<% menu.elements.each do |elem| %>	
-			<li><%= link_to elem.name, edit_slices_lens_path(:slices_id => @slice.id, :id => elem.id), :params => { :option => 'element' } %> </li>
-		<% end %>	
-	</ul>	
-</li>

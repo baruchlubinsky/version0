@@ -7,17 +7,43 @@ class NavigationsController < ApplicationController
 		
 		location = Template.find(navigations[0].nav_id)
 		
-		navigations.drop(1).each do |nav|
-			location = location.child_elements.find(nav.nav_id)
+		tempNav = Array.new
+		
+    navTemp = Navigation.new
+    navTemp.name = @slice.template.name
+    navTemp.nav_id = @slice.template._id
+    
+    tempNav << navTemp
+		
+		navigations.each do |nav|
+		  puts nav.name
+		  puts location.name
+      unless nav.nav_id.to_s == location.id.to_s
+              location = location.child_elements.find(nav.nav_id)
+              temp = Navigation.new
+              temp.name = location.name
+              temp.nav_id = location.id
+              tempNav << temp
+            end 
+		  if location.child_elements.index  {|e| (e.id.to_s <=> params[:id]) == 0 }
+        curr_element = location.child_elements.find(params[:id])
+        new_level = Navigation.new
+        new_level.nav_id = curr_element.id
+        new_level.name = curr_element.name
+        tempNav << new_level
+        break
+      end
+      
 		end
 		
-		curr_element = location.child_elements.find(params[:id])
+		#curr_element = location.child_elements.find(params[:id])
 		
-		new_level = Navigation.new
-		new_level.nav_id = curr_element.id
-		new_level.name = curr_element.name
+		#new_level = Navigation.new
+		#new_level.nav_id = curr_element.id
+		#new_level.name = curr_element.name
 		
-		@slice.navigations << new_level
+		#@slice.navigations << new_level
+		@slice.navigations = tempNav
 		
 		@slice.save
 		
