@@ -5,7 +5,7 @@ class NavigationsController < ApplicationController
 		
 		navigations = @slice.navigations
 		
-		location = Template.find(navigations[0].nav_id)
+		location = @slice.template
 		
 		tempNav = Array.new
 		

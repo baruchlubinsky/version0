@@ -7,7 +7,10 @@ class MatrixObject
 	
 	field :object_type, :type => String
 	
+	field :access_level, :type => String
+	
 	belongs_to :element
+	belongs_to :user
 	
 	def matrix_attributes
 	  { :name => self.name }

@@ -25,7 +25,7 @@
 <% end %>
 
 <% content_for :templateMenu do %>
-	<%= render :partial => 'templates/menu', :locals => { :menu => @slice.workspace.project.template }  %>
+	<%= render :partial => 'templates/menu', :locals => { :menu => @slice.workspace.project.project_structure }  %>
 <% end %>
 
 <% content_for :leftHand do 

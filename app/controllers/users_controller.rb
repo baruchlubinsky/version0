@@ -4,13 +4,15 @@ class UsersController < ApplicationController
     render :layout => 'layouts/empty'
   end
   def create
-    @user = User.new :params['user']
+    @user = User.new(params[:user])
+    puts :params['user']
+    puts @user
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
       flash[:message] = 'Unable to create user'
-      redirect_to 'new'
+      redirect_to new_user_path
     end
   end
   def show
