@@ -5,7 +5,7 @@ class LensController < ApplicationController
 		when 'project'
 			case params[:option]
 			when 'structure'
-				location = @slice.workspace.project.template
+				location = @slice.template
 				@slice.lens = Lens.new
 				unless location.id.to_s == @slice.navigations.last.nav_id
 					@slice.navigations.drop(1).each do |nav|

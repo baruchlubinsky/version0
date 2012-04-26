@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>MatrixMeV01</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "general", :media => "all" %>
+  <%= stylesheet_link_tag    "breadcrumb", :media => "all" %>
+  <%= stylesheet_link_tag    "menu", :media => "all" %>
+  <%= stylesheet_link_tag    "popup", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -70,13 +73,6 @@
 											<li><a>Polls</a></li>
 										</ul>
 									</li>
-									<li>
-										<a href='#project'>Project</a>
-										<ul>
-											<li><%= link_to 'Structure', edit_slices_lens_path(:slices_id => @slice.id, :id => 'project', :option => 'structure')  %> </li>
-											<li><a>Assets</a></li>														
-										</ul>
-									</li>
 								</ul>
 							</li>
 						</nav>
@@ -106,38 +102,8 @@
 	<div id='content'>
 		<%= yield :content %>
 	</div>
-	<div id='full-screen-popup' class='hidden'>
-		<div id='add-item-form'>
-			<h3>New Matrix Object</h3>
-			<%= form_for [@slice, @matrix_object], :action => 'create' do |f| %>
-				<%= f.label :name, 'Object name' %>
-				<%= f.text_field :name %>
-				<%= f.label :type, 'Object type' %>
-				<%= f.select 'object_type', options_for_select(%w{Member Content Conversation Project Calibration}), :id => 'new_object_type_select' %> 
-				<div id='attributes_div'>
-				
-				</div>
-				<%= f.submit %>
-			<% end %>
-			<div id='member_attributes' class='hidden'>
-				<%= label_tag :company_name, 'Company' %>
-				<%= text_field_tag :company_name %>
-				<%= label_tag :job_title, 'Job title' %>
-				<%= text_field_tag :job_title %>
-				<%= label_tag :expertise_profile, 'Expertise Profile' %>
-				<%= text_field_tag :company_name %>
-				<%= label_tag :affiliations, 'Affiliations' %>
-				<%= text_field_tag :affiliations %>
-			</div>
-			<div id='content_attributes' class='hidden'>
-				<%= label_tag :content_type, 'Type' %>
-				<%= text_field_tag :content_type %>
-				<%= label_tag :author, 'Author' %>
-				<%= text_field_tag :author %>
-				<%= label_tag :description, 'Description' %>
-				<%= text_field_tag :description %>
-			</div>
-		</div>
+	<div>
+		<%= yield :overlays %>
 	</div>
 </body>
 </html>

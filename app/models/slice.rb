@@ -14,7 +14,7 @@ class Slice
 	#attr_accessor :contextMenu, :cSelection, :lens, :navigation
 	
 	def template
-		self.workspace.project.template
+		self.workspace.project.project_structure
 	end
 	
 	def currentElement

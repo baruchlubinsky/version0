@@ -1,0 +1,12 @@
+<h1><%= @user.name + "'s" %> matrix</h1>
+<h4>Projects</h4>
+<% if @user.projects.count > 0 %>
+	<ul>
+		<% @user.projects.each do |p| %>
+			<li><%= link_to p.name, user_project_path(@user, p) %></li>
+		<% end %>
+	</ul>	
+<% end %>
+<%= link_to "Start a new project", new_user_project_path(@user) %>
+<h4>Expertise</h4>
+<%= link_to "Create a new public expertise profile", new_user_matrix_object_path(@user) %>

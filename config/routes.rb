@@ -1,5 +1,10 @@
 MatrixMeV01::Application.routes.draw do
-  resources :defaults
+  resources :authorisations
+  
+  resources :users do
+    resources :projects
+    resources :matrix_objects
+  end
   
   resources :slices do
   	resources :lens

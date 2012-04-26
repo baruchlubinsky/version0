@@ -1,0 +1,10 @@
+<h1>New project</h1>
+<%= form_for [@user, @project] do |f| %>
+	<%= f.label :name, 'Project title' %>
+	<%= f.text_field :name %><br>
+	<%= f.label :template_id, 'Template' %>
+	<%= f.select :template_id, @templates, :value_field => :id %><br>
+	<%= label_tag :role, 'Your role/position'%>
+	<%= text_field_tag :role %><br>
+	<%= f.submit 'Create'%>
+<% end %>

@@ -17,43 +17,43 @@ demo.name = 'Business Planning Template'
 'Sales Plan', 'Marketing Campaigns', 'Budget'].each do |name|
 	elem = Element.new
 	elem.name = name
-	demo.elements << elem
+	demo.child_elements << elem
 end
 
 ['Objective Name 1', 'Objective Name 2'].each do |name|
-	demo.elements[0].child_elements.build(:name => name)
+	demo.child_elements[0].child_elements.build(:name => name)
 end
 
 ['Market Forecast', 'Market Assessment', 'Market Positioning', 'Market Strategy'].each do |name|
-	demo.elements[1].child_elements.build(:name => name)
+	demo.child_elements[1].child_elements.build(:name => name)
 end
 
 ['Competitor Assessment', 'Competitor Positioning'].each do |name|
-	demo.elements[2].child_elements.build(:name => name)
+	demo.child_elements[2].child_elements.build(:name => name)
 end
 
 ['Segment Analysis', 'Segment Assessment', 'Segment Positioning', 'Segment Strategy'].each do |name|
-	demo.elements[3].child_elements.build(:name => name)
+	demo.child_elements[3].child_elements.build(:name => name)
 end
 
 ['Route Structure', 'Route Capacity', 'Route Forecast'].each do |name|
-	demo.elements[4].child_elements.build(:name => name)
+	demo.child_elements[4].child_elements.build(:name => name)
 end
 
 ['Product Features', 'Product Profitability', 'Product Assessment', 'Product Strategy'].each do |name|
-	demo.elements[5].child_elements.build(:name => name)
+	demo.child_elements[5].child_elements.build(:name => name)
 end
 
 ['Sales Metric', 'Sales Forecast'].each do |name|
-	demo.elements[6].child_elements.build(:name => name)
+	demo.child_elements[6].child_elements.build(:name => name)
 end
 
 ['Campaign Objectives', 'Campaign Metrics', 'Campaign Strategy', 'Campaign Execution'].each do |name|
-	demo.elements[7].child_elements.build(:name => name)
+	demo.child_elements[7].child_elements.build(:name => name)
 end
 
 ['Budget Plan'].each do |name|
-	demo.elements[8].child_elements.build(:name => name)
+	demo.child_elements[8].child_elements.build(:name => name)
 end
 
 

@@ -1,6 +1,6 @@
 <li><a><%= menu.name %></a>
 	<ul>
-		<% menu.elements.each do |elem| %>	
+		<% menu.child_elements.each do |elem| %>	
 			<li><%= link_to elem.name, edit_slices_lens_path(:slices_id => @slice.id, :id => elem.id, :option => 'element') %> </li>
 		<% end %>	
 	</ul>	

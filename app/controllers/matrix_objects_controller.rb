@@ -2,11 +2,15 @@ class MatrixObjectsController < ApplicationController
 	def create
 		@slice = Slice.find(params[:slices_id])
 		
-		@object = MatrixObject.new
+		@object = (params[:matrix_object][:object_type] << "Object").constantize.new
 		
 		@object.name = params[:matrix_object][:name]
 		  
-		@object.object_type = params[:matrix_object][:object_type]
+		#@object.object_type = params[:matrix_object][:object_type]
+		
+		@object.matrix_attributes.each do |key, value|
+		  @object[key] = params[key]
+		end
 		
 		@nav = @slice.template
 		
