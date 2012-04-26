@@ -1,0 +1,17 @@
+<ul id='breadcrumb'>
+	<li><%= link_to 'My projects', user_path(user) %></li>
+	<% slice.breadcrumb.each do |crumb| %>
+		<li>
+			<%= link_to crumb[:nav].name, slices_navigation_path(:slices_id => slice.id, :id => crumb[:nav].nav_id), :method => :delete  %>
+			<% if crumb[:elements].count > 0 %>
+				<ul>
+					<% crumb[:elements].each do |el| %>
+						<li>
+							<%= link_to el.name, edit_slices_navigation_path(:slices_id => slice.id, :id => el.id ) %> 
+						</li>
+					<% end %>
+				</ul>
+			<% end %>	
+		</li>
+	<% end %>
+</ul>
