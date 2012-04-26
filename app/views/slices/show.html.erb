@@ -1,19 +1,5 @@
 <% content_for :breadcrumb do %>
-	<ul id='breadcrumb'>
-		<li><a>My Projects</a> </li>
-	<% @slice.breadcrumb.each do |crumb| %>
-		<li>
-			<%= link_to crumb[:nav].name, slices_navigation_path(:slices_id => @slice.id, :id => crumb[:nav].nav_id), :method => :delete  %>
-			<ul>
-				<% crumb[:elements].each do |el| %>
-					<li>
-						<%= link_to el.name, edit_slices_navigation_path(:slices_id => @slice.id, :id => el.id ) %> 
-					</li>
-				<% end %>
-			</ul>
-		</li>
-	<% end %>
-	</ul>
+	<%= render :partial => 'templates/breadcrumb', :locals => {:user => @user, :slice => @slice } %>
 <% end %>
 
 <% content_for :contextName do %>
@@ -46,7 +32,76 @@
 			<div class='matrix-object'>
 				<p><%= el.name %></p>
 				<p><i><%= el.object_type unless el.object_type.nil? %></i></p>
+				<% el.matrix_attributes.each do |key, value| %>
+					<% unless value.nil? %>
+						<%= key.to_s.capitalize.gsub('_',' ') %> : <%= value %><br>
+					<% end %>
+				<% end %>
 			</div>
 		<% end %>
 	<% end %>
+<% end %>
+
+<% content_for :overlays do %>
+	<div id='full-screen-popup' class='hidden'>
+		<div id='add-item-form'>
+			<h3>New Matrix Object</h3>
+			<%= form_for [@slice, @matrix_object], :action => 'create' do |f| %>
+				<%= f.label :name, 'Object name' %>
+				<%= f.text_field :name %>
+				<%= f.label :type, 'Object type' %>
+				<%= f.select :object_type, options_for_select(@new_matrix_objects.map{|o| o.object_type.capitalize}) %> 
+				<div id='attributes_div'>
+				
+				</div>
+				<%= f.submit %>
+			<% end %>
+			<% @new_matrix_objects.each do |o| %>
+			<div id=<%= "#{o.object_type}_attributes" %> class='hidden' >
+				<% o.matrix_attributes.each do |key, value| %>
+					<%= label_tag key, key.to_s.capitalize.gsub('_',' ') %>
+					<%= text_field_tag key %><br>
+				<% end %>
+			</div>
+			<% end %>
+			<!--<div id='member_attributes' class='hidden'>
+				<%= label_tag :company_name, 'Company' %>
+				<%= text_field_tag :company_name %><br>
+				<%= label_tag :job_title, 'Job title' %>
+				<%= text_field_tag :job_title %><br>
+				<%= label_tag :expertise_profile, 'Expertise Profile' %>
+				<%= text_field_tag :company_name %><br>
+				<%= label_tag :affiliations, 'Affiliations' %>
+				<%= text_field_tag :affiliations %><br>
+			</div>
+			<div id='content_attributes' class='hidden'>
+				<%= label_tag :content_type, 'Type' %>
+				<%= text_field_tag :content_type %><br>
+				<%= label_tag :author, 'Author' %>
+				<%= text_field_tag :author %><br>
+				<%= label_tag :description, 'Description' %>
+				<%= text_field_tag :description %><br>
+			</div>
+			<div id='conversation_attributes' class='hidden'>
+				<%= label_tag :company_name, 'conversation_attributes' %>
+				<%= text_field_tag :company_name %><br>
+				<%= label_tag :job_title, 'Job title' %>
+				<%= text_field_tag :job_title %><br>
+				<%= label_tag :expertise_profile, 'Expertise Profile' %>
+				<%= text_field_tag :company_name %><br>
+				<%= label_tag :affiliations, 'Affiliations' %>
+				<%= text_field_tag :affiliations %><br>
+			</div>
+			<div id='calibration_attributes' class='hidden'>
+				<%= label_tag :company_name, 'calibration_attributes' %>
+				<%= text_field_tag :company_name %><br>
+				<%= label_tag :job_title, 'Job title' %>
+				<%= text_field_tag :job_title %><br>
+				<%= label_tag :expertise_profile, 'Expertise Profile' %>
+				<%= text_field_tag :company_name %><br>
+				<%= label_tag :affiliations, 'Affiliations' %>
+				<%= text_field_tag :affiliations %><br>
+			</div>-->
+		</div>
+	</div>
 <% end %>

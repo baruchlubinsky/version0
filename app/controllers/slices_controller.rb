@@ -15,6 +15,7 @@ class SlicesController < ApplicationController
 		@slice.save 
 		redirect_to slices_path(@slice)
 	end
+
 	
 	def show
 		
@@ -26,6 +27,7 @@ class SlicesController < ApplicationController
       @objects = @slice.currentElement.matrix_objects  
 		end
 		
+		@new_matrix_objects = [MemberObject.new, ContentObject.new, CallibrationObject.new, ConversationObject.new]
 		  
 	end
 

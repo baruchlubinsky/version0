@@ -16,15 +16,16 @@ class ProjectsController < ApplicationController
     @project.name = params[:project][:name]
     
     member = MemberObject.new
-    member.name = User.name
-    member.job_title = params[:project][:role]
-      
+    member.name = @user.name
+    member.job_title = params[:role]
+        
     @user.matrix_objects << member
       
     @project.project_structure.matrix_objects << member
       
     @user.projects << @project
     
+    member.save!
     @project.save!
     @user.save!
     
@@ -37,13 +38,28 @@ class ProjectsController < ApplicationController
     @slice.workspace = @workspace
     
     nav = Navigation.new
-    nav.name = @slice.template.name
+    nav.name = @project.name
     nav.nav_id = @slice.template.id
     @slice.navigations << nav
     
     @workspace.save!
     @slice.save!
     
+    redirect_to slices_path(@slice)
+  end
+  
+  def show
+    w = Workspace.where(:project_id => params[:id], :user_id => session[:user_id])
+    if w.count == 0
+      @slice = Slice.new
+      workspace = Workspace.new
+      workspace.project = Project.find(params[:id])
+      workspace.user = User.find(:user_id => session[:user_id])
+      @slice.workspace = workspace
+      @slice.save
+    else
+      @slice = Slice.find(w.first.slice_id)
+    end    
     redirect_to slices_path(@slice)
   end
   

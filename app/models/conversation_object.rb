@@ -4,7 +4,12 @@ class ConversationObject < MatrixObject
   field :last_update, :type => Date
   
   def matrix_attributes
-    super.update({ :author => self.author, :description => self.description })
+    { :author => self.author, :description => self.description, :last_update => self.last_update }
   end
+  
+  def initialize
+      super
+      self.object_type = "conversation"
+    end
   
 end

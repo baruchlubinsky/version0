@@ -4,7 +4,12 @@ class ContentObject < MatrixObject
   field :description, :type => String
   
   def matrix_attributes
-    super.update({ :content_type => self.content_type, :author => self.author, :description => self.description })
+    { :content_type => self.content_type, :author => self.author, :description => self.description }
+  end
+  
+  def initialize
+    super
+    self.object_type = "content"
   end
   
 end

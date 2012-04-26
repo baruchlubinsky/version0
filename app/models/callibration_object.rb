@@ -4,7 +4,12 @@ class CallibrationObject < MatrixObject
   field :last_change, :type => Date
   
   def matrix_attributes
-    super.update({ :author => self.author, :description => self.description })
+    { :author => self.author, :description => self.description, :last_change => self.last_change }
+  end
+  
+  def initialize
+    super
+    self.object_type = "callibration"
   end
   
 end
