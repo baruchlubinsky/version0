@@ -1,6 +1,9 @@
 MatrixMeV01::Application.routes.draw do
   resources :authorisations
   
+  match 'login' => 'authorisations#new'
+  match 'logout' => 'authorisations#destroy'
+  
   resources :users do
     resources :projects
     resources :matrix_objects

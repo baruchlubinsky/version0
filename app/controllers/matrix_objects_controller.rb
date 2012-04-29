@@ -1,4 +1,4 @@
-class MatrixObjectsController < ApplicationController
+class MatrixObjectsController < SecureController
 	def create
 		@slice = Slice.find(params[:slices_id])
 		

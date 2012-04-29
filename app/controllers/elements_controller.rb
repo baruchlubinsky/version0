@@ -1,3 +1,3 @@
-class ElementsController < ApplicationController
+class ElementsController < SecureController
 
 end

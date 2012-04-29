@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < SecureController
   def new
     @user = User.find(params[:user_id])
     @project = Project.new

@@ -1,4 +1,4 @@
-class NavigationsController < ApplicationController
+class NavigationsController < SecureController
 
 	def edit
 		@slice = Slice.find(params[:slices_id])
@@ -61,7 +61,7 @@ class NavigationsController < ApplicationController
 		
 		@slice.save
 		
-		redirect_to edit_slices_lens_path(:slices_id => @slice.id, :id => 'project', :option => 'structure')
+		redirect_to slices_path(@slice)
 		
 	end
 		

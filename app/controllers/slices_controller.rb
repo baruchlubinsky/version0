@@ -1,4 +1,4 @@
-class SlicesController < ApplicationController
+class SlicesController < SecureController
 	
 
 	def new
@@ -20,6 +20,8 @@ class SlicesController < ApplicationController
 	def show
 		
 		@slice = Slice.find(params[:id])
+		  
+		@user = User.find(session[:user_id])
 		
 		if @slice.currentElement.id == @slice.template.id
 		  @objects = @slice.template.all_objects

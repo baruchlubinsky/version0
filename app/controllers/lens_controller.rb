@@ -1,4 +1,4 @@
-class LensController < ApplicationController
+class LensController < SecureController
 	def edit
 		@slice = Slice.find(params[:slices_id])
 		case params[:id]
